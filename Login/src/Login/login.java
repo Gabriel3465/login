@@ -41,14 +41,14 @@ public class login extends JFrame {
     	elPanel.setLocation(0, 0);
     	elPanel.setLayout(null);//quita todo el molde
     	
-    	JLabel etiqueta1 = new JLabel("Bienvenido");
+    	JLabel etiqueta1 = new JLabel("Inicio de sesion");
     	etiqueta1.setSize(200, 40);
     	etiqueta1.setLocation(140, 20);
     	etiqueta1.setHorizontalAlignment(JLabel.CENTER);
     	etiqueta1.setFont(new Font("Bahnschrift",Font.BOLD,20));
     	elPanel.add(etiqueta1);
     	
-    	JLabel etiqueta2 = new JLabel("Ingrese su correo; ");
+    	JLabel etiqueta2 = new JLabel("Ingrese su correo: ");
     	etiqueta2.setSize(200, 40);
     	etiqueta2.setLocation(140, 100);
     	etiqueta2.setFont(new Font("Bahnschrift",Font.BOLD,15));
@@ -96,12 +96,12 @@ public class login extends JFrame {
         hepl.setFont(new Font("Bahnschrift", Font.ITALIC, 12));
         elPanel.add(hepl);
     	
-        JButton btnVolver = new JButton("Volver");
-        btnVolver.setSize(75, 40);
-        btnVolver.setLocation(20, 20);
-        btnVolver.setFont(new Font("Bahnschrift", Font.BOLD, 10));
+        JButton volver = new JButton("Volver");
+        volver.setSize(75, 40);
+        volver.setLocation(20, 20);
+        volver.setFont(new Font("Bahnschrift", Font.BOLD, 10));
         
-        elPanel.add(btnVolver);
+        elPanel.add(volver);
     
     	
     	return elPanel;
