@@ -1,61 +1,113 @@
 package Login;
 
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 public class login extends JFrame {
-    private JTextField userField;
-    private JPasswordField passField;
-    private JButton loginButton;
+
 
     public login() {
-    	setTitle("Login");
-        setSize(600, 500);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-        setLayout(new BorderLayout());
-
-        JPanel inputPanel = new JPanel(new GridLayout(2, 2, 5, 5));
-        JLabel userLabel = new JLabel("Usuario:");
-        userField = new JTextField();
-        JLabel passLabel = new JLabel("Contraseña:");
-        passField = new JPasswordField();
-
-        inputPanel.add(userLabel);
-        inputPanel.add(userField);
-        inputPanel.add(passLabel);
-        inputPanel.add(passField);
-
-        loginButton = new JButton("Iniciar sesión");
-        loginButton.addActionListener(e -> {
-            String username = userField.getText();
-            String password = new String(passField.getPassword());
-            if (validateLogin(username, password)) {
-                JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso");
-            } else {
-                JOptionPane.showMessageDialog(null, "Credenciales incorrectas", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        });
-
-        add(inputPanel, BorderLayout.NORTH);
-        add(loginButton, BorderLayout.SOUTH);
+    	
+    	setVisible(true);
+    	setSize(500, 500);
+    	setLocationRelativeTo(null);
+    	
+    	setTitle("Login");    	
+    	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    	
+    	setMaximumSize(new Dimension(700, 700));
+    	setMinimumSize(new Dimension(400, 400));
+    	
+    	this.add(this.logins());
+    	this.repaint();
+    	
     }
+    
+    public JPanel logins() {
+    	
+    	JPanel elPanel = new JPanel();
+    	
+    	elPanel.setBackground(Color.decode("#917841"));
+    	elPanel.setOpaque(true);
+    	elPanel.setSize(500, 500);
+    	elPanel.setLocation(0, 0);
+    	elPanel.setLayout(null);//quita todo el molde
+    	
+    	JLabel etiqueta1 = new JLabel("Bienvenido");
+    	etiqueta1.setSize(200, 40);
+    	etiqueta1.setLocation(140, 20);
+    	etiqueta1.setHorizontalAlignment(JLabel.CENTER);
+    	etiqueta1.setFont(new Font("Bahnschrift",Font.BOLD,20));
+    	elPanel.add(etiqueta1);
+    	
+    	JLabel etiqueta2 = new JLabel("Ingrese su correo; ");
+    	etiqueta2.setSize(200, 40);
+    	etiqueta2.setLocation(140, 100);
+    	etiqueta2.setFont(new Font("Bahnschrift",Font.BOLD,15));
+    	elPanel.add(etiqueta2);
+    	
+    	JTextField email = new JTextField();
+    	email.setSize(200, 40);
+    	email.setLocation(140, 140);
+    	email.setFont(new Font("Bahnschrift",Font.BOLD,15));
+    	elPanel.add(email);
+    	
+        JLabel etiqueta3 = new JLabel("Ingrese su contraseña:");
+        etiqueta3.setSize(200, 40);
+        etiqueta3.setLocation(140, 180);
+        etiqueta3.setFont(new Font("Bahnschrift", Font.BOLD, 15));
+        elPanel.add(etiqueta3);
 
-
-    private boolean validateLogin(String username, String password) {
-        return username.equals("admin") && password.equals("1234");
+        JPasswordField password = new JPasswordField();
+        password.setSize(200, 40);
+        password.setLocation(140, 220);
+        password.setFont(new Font("Bahnschrift", Font.PLAIN, 15));
+        elPanel.add(password);
+        
+        JLabel OlvidoContrasena = new JLabel("¿Olvidó su contraseña?");
+        OlvidoContrasena.setSize(200, 20);
+        OlvidoContrasena.setLocation(220, 260);
+        OlvidoContrasena.setFont(new Font("Bahnschrift", Font.ITALIC, 12));
+        elPanel.add(OlvidoContrasena);
+        
+        JButton botonAcceder = new JButton("Acceder");
+        botonAcceder.setSize(120, 40);
+        botonAcceder.setLocation(190, 300);
+        botonAcceder.setFont(new Font("Bahnschrift", Font.BOLD, 15));
+        elPanel.add(botonAcceder);
+        
+        JLabel CrearCuenta = new JLabel("¿No tienes cuenta? Crear cuenta");
+        CrearCuenta.setSize(200, 20);
+        CrearCuenta.setLocation(160, 350);
+        CrearCuenta.setFont(new Font("Bahnschrift", Font.ITALIC, 12));
+        elPanel.add(CrearCuenta);
+        
+        JLabel hepl = new JLabel("¿Ayuda?");
+        hepl.setSize(200, 20);
+        hepl.setLocation(20, 420);
+        hepl.setFont(new Font("Bahnschrift", Font.ITALIC, 12));
+        elPanel.add(hepl);
+    	
+        JButton btnVolver = new JButton("Volver");
+        btnVolver.setSize(75, 40);
+        btnVolver.setLocation(20, 20);
+        btnVolver.setFont(new Font("Bahnschrift", Font.BOLD, 10));
+        
+        elPanel.add(btnVolver);
+    
+    	
+    	return elPanel;
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new login().setVisible(true));
+        SwingUtilities.invokeLater(() -> new login());
     }
 }
