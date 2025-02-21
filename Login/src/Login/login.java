@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
@@ -20,7 +22,7 @@ public class login extends JFrame {
     public login() {
     	
     	setVisible(true);
-    	setSize(500, 800);
+    	setSize(1000, 800);
     	setLocationRelativeTo(null);
     	
     	setTitle("Login");    	
@@ -28,10 +30,13 @@ public class login extends JFrame {
     	setMaximumSize(new Dimension(700, 700));
     	setMinimumSize(new Dimension(400, 400));
     	
-    	this.add(this.logins());
+    	//this.add(this.logins());
+    	this.add(this.scrooll_pane());
+    	
     	this.repaint();
     	
     }
+   
     
     public JPanel logins() {
     	
@@ -117,6 +122,106 @@ public class login extends JFrame {
     	
     	return elPanel;
     }
+    
+ public JPanel scrooll_pane() {
+    	
+    	JPanel elPanel = new JPanel();
+    	
+    	elPanel.setBackground(Color.decode("#917841"));
+    	elPanel.setOpaque(true);
+    	elPanel.setSize(500, 500);
+    	elPanel.setLocation(0, 0);
+    	elPanel.setLayout(null);//quita todo el molde
+    	
+    	JLabel etiqueta1 = new JLabel("Inicio de sesion");
+    	etiqueta1.setSize(200, 40);
+    	etiqueta1.setLocation(400, 20);
+    	etiqueta1.setHorizontalAlignment(JLabel.CENTER);
+    	etiqueta1.setFont(new Font("Bahnschrift",Font.BOLD,20));
+    	elPanel.add(etiqueta1);
+    	
+    	
+    	
+    	
+    	   Object data[][]={ {"Marisol","19","si"},    
+    	            {"carlos","29","si"},    
+    	            {"javier","25","no"},
+    	            {"Marisol","19","si"},    
+    	            {"carlos","29","si"},    
+    	            {"javier","25","no"},
+    	            {"carlos","29","si"},    
+    	            {"javier","25","no"},
+    	            {"Marisol","19","si"},    
+    	            {"carlos","29","si"},    
+    	            {"javier","25","no"},
+    	            {"carlos","29","si"},    
+    	            {"javier","25","no"},
+    	            {"Marisol","19","si"},    
+    	            {"carlos","29","si"},    
+    	            {"javier","25","no"},
+    	            {"carlos","29","si"},    
+    	            {"javier","25","no"},
+    	            {"Marisol","19","si"},    
+    	            {"carlos","29","si"},    
+    	            {"javier","25","no"},
+    	            {"carlos","29","si"},    
+    	            {"javier","25","no"},
+    	            {"Marisol","19","si"},    
+    	            {"carlos","29","si"},    
+    	            {"javier","25","no"},
+    	            {"carlos","29","si"},    
+    	            {"javier","25","no"},
+    	            {"Marisol","19","si"},    
+    	            {"carlos","29","si"},    
+    	            {"javier","25","no"},
+    	            {"carlos","29","si"},    
+    	            {"javier","25","no"},
+    	            {"Marisol","19","si"},    
+    	            {"carlos","29","si"},    
+    	            {"javier","25","no"},
+    	            };    
+    	    String titles[]={"Nombre","Años","si / no??"};   
+    	    
+    	    
+    	    JTable tablas = new JTable(data, titles);
+    	    JScrollPane scroll_pane = new JScrollPane(tablas);
+    	    scroll_pane.setSize(850, 300);
+    	    scroll_pane.setLocation(60, 120);
+    	    elPanel.add(scroll_pane);
+    	    
+    	    JButton botonDes = new JButton("Descargar");
+            botonDes.setSize(100, 30);
+            botonDes.setLocation(670, 70);
+            botonDes.setFont(new Font("Bahnschrift", Font.BOLD, 11));
+            elPanel.add(botonDes);
+            
+            JButton botonAd = new JButton("Añadir");
+            botonAd.setSize(100, 30);
+            botonAd.setLocation(800, 70);
+            botonAd.setFont(new Font("Bahnschrift", Font.BOLD, 11));
+            elPanel.add(botonAd);
+            
+            JLabel etiqueta21 = new JLabel("Alumnos:");
+        	etiqueta21.setSize(200, 40);
+        	etiqueta21.setLocation(140, 50);
+        	etiqueta21.setFont(new Font("Bahnschrift",Font.BOLD,15));
+        	elPanel.add(etiqueta21);
+        	
+        	JLabel etiqueta22 = new JLabel("34");
+        	etiqueta22.setSize(200, 40);
+        	etiqueta22.setLocation(170, 70);
+        	etiqueta22.setFont(new Font("Bahnschrift",Font.BOLD,15));
+        	elPanel.add(etiqueta22);
+    	
+    	
+    	
+    	
+    	
+    	return elPanel;
+    }
+    
+    
+  
     
     
     public static void main(String[] args) {
