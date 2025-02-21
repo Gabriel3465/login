@@ -5,10 +5,12 @@ import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
@@ -18,7 +20,7 @@ public class login extends JFrame {
     public login() {
     	
     	setVisible(true);
-    	setSize(500, 500);
+    	setSize(500, 800);
     	setLocationRelativeTo(null);
     	
     	setTitle("Login");    	
@@ -100,13 +102,23 @@ public class login extends JFrame {
         volver.setSize(75, 40);
         volver.setLocation(20, 20);
         volver.setFont(new Font("Bahnschrift", Font.BOLD, 10));
-        
         elPanel.add(volver);
+        
+        JRadioButton terms1 = new JRadioButton("Acepto los terminos");
+        terms1.setSize(200, 40);
+        terms1.setLocation(40, 500);
+        elPanel.add(terms1);
+        
+        JRadioButton terms2 = new JRadioButton("Acepto los terminos");
+        terms2.setSize(200, 40);
+        terms2.setLocation(40, 550);
+        elPanel.add(terms2);
     
     	
     	return elPanel;
     }
-
+    
+    
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new login());
     }
