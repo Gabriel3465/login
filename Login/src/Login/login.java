@@ -3,8 +3,10 @@ package Login;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Image;
 
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -33,14 +35,124 @@ public class login extends JFrame {
     	setMaximumSize(new Dimension(700, 700));
     	setMinimumSize(new Dimension(400, 400));
     	
-    	this.add(this.logins());
-    	this.add(this.registro());
-    	//this.add(this.scrooll_pane());
-    	
+//    	this.add(this.logins());
+//    	this.add(this.registro());
+//    	this.add(this.scrooll_pane());
+    	this.add(this.loginImagen());
+
     	this.repaint();
     	
     }
-   
+    
+    public JPanel loginImagen() {
+        JPanel contenedor = new JPanel();
+        contenedor.setLayout(null); // Desactivar layout para colocar los paneles manualmente
+        contenedor.setSize(1000, 800);
+
+        // Panel izquierdo (azul)
+        JPanel panelIzquierdo = new JPanel();
+        panelIzquierdo.setBackground(Color.decode("#004E70"));
+        panelIzquierdo.setBounds(0, 0, 500, 800); // Primera mitad
+        panelIzquierdo.setLayout(null);
+        
+        // Panel derecho
+        JPanel panelDerecho = new JPanel();
+        panelDerecho.setBounds(500, 0, 500, 800);
+        panelDerecho.setLayout(null);
+        
+        // imagen de fondo
+        ImageIcon fondoIcono = new ImageIcon("fondoDeInterfaz1.png");
+        Image imagenEscalada = fondoIcono.getImage().getScaledInstance(500, 800, Image.SCALE_SMOOTH);
+        JLabel fondoLabel = new JLabel(new ImageIcon(imagenEscalada));
+        fondoLabel.setBounds(0, 0, 500, 800); // Ajustar al tamaño del panel
+        panelDerecho.add(fondoLabel);
+        
+        //imagen de logo
+        ImageIcon fondoLogo = new ImageIcon("logo.png");
+        Image imagenEscalada3 = fondoLogo.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+        JLabel fondoLabel3 = new JLabel(new ImageIcon(imagenEscalada3));
+        fondoLabel3.setBounds(210,  20, 50, 50); // Ajustar al tamaño del panel
+        panelIzquierdo.add(fondoLabel3);
+        
+        //icoono de usuario
+        ImageIcon contraseña = new ImageIcon("usuario.png");
+        Image imagenEscalada4 = contraseña.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+        JLabel fondoLabel_4 = new JLabel(new ImageIcon(imagenEscalada4));
+        fondoLabel_4.setBounds(110, 160, 40, 40);
+        panelIzquierdo.add(fondoLabel_4);
+        
+        //icono de contraseña
+        ImageIcon usuario = new ImageIcon("contraseña.png");
+        Image imagenEscalada5 = usuario.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+        JLabel fondoLabel_5 = new JLabel(new ImageIcon(imagenEscalada5));
+        fondoLabel_5.setBounds(110, 260, 40, 40);
+        panelIzquierdo.add(fondoLabel_5);
+
+        // Etiqueta de título en el panel izquierdo
+        JLabel etiqueta1 = new JLabel("Inicio de sesión");
+        etiqueta1.setForeground(Color.WHITE);
+        etiqueta1.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
+        etiqueta1.setBounds(165, 70, 200, 40);
+        panelIzquierdo.add(etiqueta1);
+
+        // Campos de usuario y contraseña
+        JLabel etiqueta2 = new JLabel("Ingrese su usuario");
+        etiqueta2.setForeground(Color.WHITE);
+        etiqueta2.setFont(new Font("Bahnschrift", Font.BOLD, 15));
+        etiqueta2.setBounds(120, 120, 200, 40);
+        panelIzquierdo.add(etiqueta2);
+
+        JTextField email = new JTextField();
+        email.setFont(new Font("Bahnschrift", Font.BOLD, 15));
+        email.setBounds(160, 160, 200, 40);
+        panelIzquierdo.add(email);
+
+        JLabel etiqueta3 = new JLabel("Ingrese su contraseña:");
+        etiqueta3.setForeground(Color.WHITE);
+        etiqueta3.setFont(new Font("Bahnschrift", Font.BOLD, 15));
+        etiqueta3.setBounds(120, 220, 200, 40);
+        panelIzquierdo.add(etiqueta3);
+
+        JPasswordField password = new JPasswordField();
+        password.setFont(new Font("Bahnschrift", Font.PLAIN, 20));
+        password.setBounds(160, 260, 200, 40);
+        panelIzquierdo.add(password);
+
+        // Botón de acceder
+        JButton botonAcceder = new JButton("Acceder");
+        botonAcceder.setFont(new Font("Bahnschrift", Font.BOLD, 15));
+        botonAcceder.setBounds(190, 360, 120, 40);
+        panelIzquierdo.add(botonAcceder);
+        
+        JLabel crearCuenta = new JLabel("<html>¿No tienes cuenta? <u>Crear cuenta</u></html>	");
+        crearCuenta.setForeground(Color.WHITE);
+        crearCuenta.setSize(200, 20);
+        crearCuenta.setLocation(160, 415);
+        crearCuenta.setFont(new Font("Bahnschrift", Font.ITALIC, 12));
+        panelIzquierdo.add(crearCuenta);
+        
+        JLabel olvidoContrasena = new JLabel("¿Olvidó su contraseña?");
+        olvidoContrasena.setForeground(Color.WHITE);
+        olvidoContrasena.setSize(200, 20);
+        olvidoContrasena.setLocation(240, 300);
+        olvidoContrasena.setFont(new Font("Bahnschrift", Font.ITALIC, 12));
+        panelIzquierdo.add(olvidoContrasena); 
+        
+        JLabel help = new JLabel("¿Ayuda?");
+        help.setForeground(Color.WHITE);
+        help.setSize(200, 20);
+        help.setLocation(20, 460);
+        help.setFont(new Font("Bahnschrift", Font.ITALIC, 12));
+        panelIzquierdo.add(help);
+
+        // Agregar ambos paneles al contenedor
+        contenedor.add(panelIzquierdo);
+        contenedor.add(panelDerecho);
+
+        return contenedor;
+    }
+
+
     
     public JPanel logins() {
     	
@@ -48,10 +160,10 @@ public class login extends JFrame {
     	
     	elPanel.setBackground(Color.decode("#917841"));
     	elPanel.setOpaque(true);
-    	elPanel.setSize(this.getWidth()/2, this.getHeight());
+    	elPanel.setSize(500, 800);
     	elPanel.setLocation(0, 0);
-    	elPanel.setLayout(null);//quita todo el molde
-    	
+    	elPanel.setLayout(null);//quita todo el molde+
+
     	JLabel etiqueta1 = new JLabel("Inicio de sesion");
     	etiqueta1.setSize(200, 40);
     	etiqueta1.setLocation(140, 20);
@@ -112,13 +224,14 @@ public class login extends JFrame {
         volver.setLocation(20, 20);
         volver.setFont(new Font("Bahnschrift", Font.BOLD, 10));
         elPanel.add(volver);
-    	
+        
+ 
     	return elPanel;
     	
     	
     }
 
-public JPanel registro() {
+    public JPanel registro() {
     	
     	JPanel registro = new JPanel();
     	
@@ -237,7 +350,8 @@ public JPanel registro() {
     	
     }
     
- public JPanel scrooll_pane() {
+ 
+    public JPanel scrooll_pane() {
     	
     	JPanel panel = new JPanel();
     	
@@ -327,10 +441,7 @@ public JPanel registro() {
     	return panel;
     }
     
-    
-  
-    
-    
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new login());
     }
