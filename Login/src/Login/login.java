@@ -9,9 +9,13 @@ import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
@@ -39,7 +43,60 @@ public class login extends JFrame {
 //    	this.add(this.registro());
 //    	this.add(this.scrooll_pane());
     	this.add(this.loginImagen());
-
+    	
+    	//Barra principal de opciones//////////////////////////////
+    	JMenuBar barra = new JMenuBar();
+    	
+    	//Opciones 1///////////////////////////////////////////////
+    	JMenu file = new JMenu("Archivo");
+    	barra.add(file);
+    	
+    	//Subopciones
+    	JMenuItem nuevo = new JMenuItem("Nuevo");
+    	file.add(nuevo);
+    	
+    	JMenuItem abrirArch = new JMenuItem("Abrir archivo");
+    	file.add(abrirArch);
+    	
+    	JMenuItem archivosRecientes = new JMenuItem("Archivos recientes");
+    	file.add(archivosRecientes);
+    	
+    	JMenuItem importar = new JMenuItem("Importar archivo");
+    	file.add(importar);
+    	
+    	JMenuItem guardar = new JMenuItem("Guardar");
+    	file.add(guardar);
+    	
+    	JMenuItem guardarComo = new JMenuItem("Guardar como");
+    	file.add(guardarComo);
+    	
+    	JMenuItem cerrar = new JMenuItem("Cerrar");
+    	file.add(cerrar);
+    	
+    	//Opciones 2////////////////////////////////////////////////
+    	JMenu opciones = new JMenu("Opciones");
+    	barra.add(opciones);
+    	
+    	//Subopciones
+    	JMenuItem editor = new JMenuItem("Editar");
+    	opciones.add(editor);
+    	
+    	JCheckBoxMenuItem instalarPlantilla = new JCheckBoxMenuItem("Instalar Plantillas");
+    	opciones.add(instalarPlantilla);
+    	
+    	JCheckBoxMenuItem recordarContraseña = new JCheckBoxMenuItem("Recordar contraseña");
+    	opciones.add(recordarContraseña);
+    	
+    	JCheckBoxMenuItem modoOscuro = new JCheckBoxMenuItem("Modo oscuro");
+    	opciones.add(modoOscuro);
+    	
+    	JCheckBoxMenuItem habilitarNotificaciones = new JCheckBoxMenuItem("Activar Notificaciones");
+    	opciones.add(habilitarNotificaciones);
+    	
+ 
+    	this.setJMenuBar(barra);
+    	
+    	
     	this.repaint();
     	
     }
