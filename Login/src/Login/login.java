@@ -44,10 +44,10 @@ public class login extends JFrame {
 //    	this.add(this.scrooll_pane());
     	this.add(this.loginImagen());
     	
-    	//Barra principal de opciones//////////////////////////////
+    	//Barra principal de opciones////////////////////////////////////////////////////
     	JMenuBar barra = new JMenuBar();
     	
-    	//Opciones 1///////////////////////////////////////////////
+    	//Opciones 1//////////////////////////////////////////////
     	JMenu file = new JMenu("Archivo");
     	barra.add(file);
     	
@@ -95,6 +95,7 @@ public class login extends JFrame {
     	
  
     	this.setJMenuBar(barra);
+    	
     	
     	
     	this.repaint();
