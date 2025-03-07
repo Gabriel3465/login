@@ -109,58 +109,137 @@ public class login extends JFrame {
     	
     }
     
-    @Override
-	public void paint(Graphics g) {
-		super.paint(g);
+//    @Override
+//	public void paint(Graphics g) {
+//		super.paint(g);
+//		
+//		Graphics2D g2d= (Graphics2D) g.create();
+//		
+//		g2d.drawRect(100, 100, 80, 80);
+//		g2d.setStroke(new BasicStroke(5));
+//		
+////		g2d.setColor(Color.green);
+//		
+//		g2d.setColor(Color.green);
+//		g2d.fillRect(120, 120, 80, 80);
+//		
+//		g2d.setColor(Color.orange);
+//		g2d.drawLine(0, 0, 200 ,250);
+//		
+//		g2d.setColor(Color.red);
+//		g2d.setFont(new Font("Bahnschrift", Font.BOLD, 25));
+//		g2d.drawString("hola", 150, 220);
+//		
+//		g2d.setColor(Color.decode("#15a9f3"));
+//		g2d.drawOval(300, 400, 60, 100);
+//		
+//		g2d.setColor(Color.decode("#15f3e9"));
+//		g2d.fillOval(320, 350, 100, 60);
+//		
+//		g2d.setColor(Color.decode("#82e708"));
+//		g2d.drawArc(350, 100, 90, 80, 0, 180);
+//		
+//		g2d.setColor(Color.decode("#a3f342"));
+//		g2d.fillArc(280, 100, 90, 80, 0, 180);
+//		
+//		g2d.setColor(Color.green);
+//		int[] x = {200, 250, 300}; 
+//        int[] y = {200, 150, 200}; 
+//        g2d.drawPolygon(x, y, 3);
+//        
+//        g2d.setColor(Color.orange);
+//		int[] x1 = {200, 250, 300}; 
+//        int[] y1 = {200, 150, 200}; 
+//        g2d.fillPolygon(x1, y1, 3);
+//	
+//		try {
+//			BufferedImage image = ImageIO.read(new File("naranja2.png"));
+//			g2d.drawImage(image,150, 300, null);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//	}
+    
+    
+    public void paint(Graphics g) {
+    	super.paint(g);
 		
 		Graphics2D g2d= (Graphics2D) g.create();
 		
-		g2d.drawRect(100, 100, 80, 80);
 		g2d.setStroke(new BasicStroke(5));
 		
-//		g2d.setColor(Color.green);
+		g2d.setColor(Color.decode("#b1f5f2"));//fondo
+		g2d.fillRect(0, 50, 500, 600);
 		
-		g2d.setColor(Color.green);
-		g2d.fillRect(120, 120, 80, 80);
+		g2d.setColor(Color.decode("#ad8429"));//vallas en horizontal
+		g2d.fillRect(0, 375, 500, 15);
+		g2d.fillRect(0, 420, 500, 15);
+
+		g2d.setColor(Color.decode("#14a20f"));//cesped
+		g2d.fillRect(0, 440, 500, 75);
 		
-		g2d.setColor(Color.orange);
-		g2d.drawLine(0, 0, 200 ,250);
+		g2d.setColor(Color.decode("#87a7a7"));//calle
+		g2d.fillRect(0, 515, 500, 85);
 		
-		g2d.setColor(Color.red);
-		g2d.setFont(new Font("Bahnschrift", Font.BOLD, 25));
-		g2d.drawString("hola", 150, 220);
+		g2d.setColor(Color.decode("#ecbb17"));//pared
+		g2d.fillRect(125, 250, 250, 200);
 		
-		g2d.setColor(Color.decode("#15a9f3"));
-		g2d.drawOval(300, 400, 60, 100);
+		g2d.setColor(Color.decode("#fc5e14"));//puerta
+		g2d.fillRect(220, 350, 60, 100);
 		
-		g2d.setColor(Color.decode("#15f3e9"));
-		g2d.fillOval(320, 350, 100, 60);
+		g2d.setColor(Color.decode("#503200"));//perilla
+		g2d.fillRect(270, 400, 5, 5);
 		
-		g2d.setColor(Color.decode("#82e708"));
-		g2d.drawArc(350, 100, 90, 80, 0, 180);
+		g2d.setColor(Color.decode("#c31106"));//techo
+		g2d.fillRect(125, 150, 250, 100);
 		
-		g2d.setColor(Color.decode("#a3f342"));
-		g2d.fillArc(280, 100, 90, 80, 0, 180);
+		int[] xIzq = {125, 125, 50}; 
+	    int[] yIzq = {150, 250, 250}; 
+	    g2d.fillPolygon(xIzq, yIzq, 3);
+	    
+	    int[] xDer = {375, 375, 450};
+	    int[] yDer = {150, 250, 250}; 
+	    g2d.fillPolygon(xDer, yDer, 3);
+	    
+	    g2d.setColor(Color.decode("#df6900"));//chimenea
+	    g2d.fillRect(300, 100, 40, 50);
+	    
+		g2d.setColor(Color.decode("#df2900"));
+	    g2d.fillRect(290, 100, 60, 20);
+	    
+		g2d.setColor(Color.decode("#87a7a7"));
+		g2d.fillRect(150, 270, 50, 50);//ventana 1
+		g2d.fillRect(300, 270, 50, 50);//ventana 2
 		
-		g2d.setColor(Color.green);
-		int[] x = {200, 250, 300}; 
-        int[] y = {200, 150, 200}; 
-        g2d.drawPolygon(x, y, 3);
-        
-        g2d.setColor(Color.orange);
-		int[] x1 = {200, 250, 300}; 
-        int[] y1 = {200, 150, 200}; 
-        g2d.fillPolygon(x1, y1, 3);
-	
-		try {
-			BufferedImage image = ImageIO.read(new File("naranja2.png"));
-			g2d.drawImage(image,150, 300, null);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		//cruz ventana 1
+		g2d.setColor(Color.decode("#fc5e14"));
+		g2d.drawLine(150, 295, 200, 295);
+		g2d.drawLine(175, 270, 175, 320);
+		
+		// Cruz ventana 2
+		g2d.drawLine(300, 295, 350, 295); 
+		g2d.drawLine(325, 270, 325, 320); 
+
+		//cercas
+		g2d.setColor(Color.decode("#e1b759"));
+		g2d.fillRect(95, 360, 15, 90);
+		g2d.fillRect(65, 360, 15, 90);
+		g2d.fillRect(35, 360, 15, 90);
+		g2d.fillRect(5, 360, 15, 90);
+		
+		for (int x = 390; x <= 480; x +=30) {
+		    g2d.fillRect(x, 360, 15, 90);
 		}
 		
-	}
+		//for que hace la lineas de las calles
+		g2d.setColor(Color.decode("#e4eb00"));
+		for (int x = 0; x <= 500; x += 80) {
+			g2d.fillRect(x, 545, 40, 20);
+		}
+		
+    }
     
     public JPanel loginImagen() {
         JPanel contenedor = new JPanel();
@@ -269,9 +348,7 @@ public class login extends JFrame {
 
         return contenedor;
     }
-
-
-    
+  
     public JPanel logins() {
     	
     	JPanel elPanel = new JPanel();
@@ -468,7 +545,6 @@ public class login extends JFrame {
     	
     }
     
- 
     public JPanel scrooll_pane() {
     	
     	JPanel panel = new JPanel();
@@ -559,7 +635,6 @@ public class login extends JFrame {
     	return panel;
     }
     
-
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new login());
     }
