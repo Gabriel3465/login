@@ -1,10 +1,17 @@
 package Login;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -31,7 +38,7 @@ public class login extends JFrame {
     public login() {
     	
     	setVisible(true);
-    	setSize(1000, 800);
+    	setSize(500, 600);
     	setLocationRelativeTo(null);
     	
     	setTitle("Login");    	
@@ -42,7 +49,7 @@ public class login extends JFrame {
 //    	this.add(this.logins());
 //    	this.add(this.registro());
 //    	this.add(this.scrooll_pane());
-    	this.add(this.loginImagen());
+//    	this.add(this.loginImagen());
     	
     	//Barra principal de opciones////////////////////////////////////////////////////
     	JMenuBar barra = new JMenuBar();
@@ -101,6 +108,59 @@ public class login extends JFrame {
     	this.repaint();
     	
     }
+    
+    @Override
+	public void paint(Graphics g) {
+		super.paint(g);
+		
+		Graphics2D g2d= (Graphics2D) g.create();
+		
+		g2d.drawRect(100, 100, 80, 80);
+		g2d.setStroke(new BasicStroke(5));
+		
+//		g2d.setColor(Color.green);
+		
+		g2d.setColor(Color.green);
+		g2d.fillRect(120, 120, 80, 80);
+		
+		g2d.setColor(Color.orange);
+		g2d.drawLine(0, 0, 200 ,250);
+		
+		g2d.setColor(Color.red);
+		g2d.setFont(new Font("Bahnschrift", Font.BOLD, 25));
+		g2d.drawString("hola", 150, 220);
+		
+		g2d.setColor(Color.decode("#15a9f3"));
+		g2d.drawOval(300, 400, 60, 100);
+		
+		g2d.setColor(Color.decode("#15f3e9"));
+		g2d.fillOval(320, 350, 100, 60);
+		
+		g2d.setColor(Color.decode("#82e708"));
+		g2d.drawArc(350, 100, 90, 80, 0, 180);
+		
+		g2d.setColor(Color.decode("#a3f342"));
+		g2d.fillArc(280, 100, 90, 80, 0, 180);
+		
+		g2d.setColor(Color.green);
+		int[] x = {200, 250, 300}; 
+        int[] y = {200, 150, 200}; 
+        g2d.drawPolygon(x, y, 3);
+        
+        g2d.setColor(Color.orange);
+		int[] x1 = {200, 250, 300}; 
+        int[] y1 = {200, 150, 200}; 
+        g2d.fillPolygon(x1, y1, 3);
+	
+		try {
+			BufferedImage image = ImageIO.read(new File("naranja2.png"));
+			g2d.drawImage(image,150, 300, null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
     
     public JPanel loginImagen() {
         JPanel contenedor = new JPanel();
