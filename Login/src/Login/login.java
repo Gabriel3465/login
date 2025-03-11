@@ -163,83 +163,173 @@ public class login extends JFrame {
 //	}
     
     
-    public void paint(Graphics g) {
-    	super.paint(g);
-		
-		Graphics2D g2d= (Graphics2D) g.create();
-		
-		g2d.setStroke(new BasicStroke(5));
-		
-		g2d.setColor(Color.decode("#b1f5f2"));//fondo
-		g2d.fillRect(0, 50, 500, 600);
-		
-		g2d.setColor(Color.decode("#ad8429"));//vallas en horizontal
-		g2d.fillRect(0, 375, 500, 15);
-		g2d.fillRect(0, 420, 500, 15);
+//    public void paint(Graphics g) {
+//
+//    	super.paint(g);
+//		
+//		Graphics2D g2d= (Graphics2D) g.create();
+//		
+//		g2d.setStroke(new BasicStroke(5));
+//		
+//		g2d.setColor(Color.decode("#b1f5f2"));//fondo
+//		g2d.fillRect(0, 50, 500, 600);
+//		
+//		g2d.setColor(Color.decode("#ad8429"));//vallas en horizontal
+//		g2d.fillRect(0, 375, 500, 15);
+//		g2d.fillRect(0, 420, 500, 15);
+//
+//		g2d.setColor(Color.decode("#14a20f"));//cesped
+//		g2d.fillRect(0, 440, 500, 75);
+//		
+//		g2d.setColor(Color.decode("#87a7a7"));//calle
+//		g2d.fillRect(0, 515, 500, 85);
+//		
+//		g2d.setColor(Color.decode("#ecbb17"));//pared
+//		g2d.fillRect(125, 250, 250, 200);
+//		
+//		g2d.setColor(Color.decode("#fc5e14"));//puerta
+//		g2d.fillRect(220, 350, 60, 100);
+//		
+//		g2d.setColor(Color.decode("#503200"));//perilla
+//		g2d.fillRect(270, 400, 5, 5);
+//		
+//		g2d.setColor(Color.decode("#c31106"));//techo
+//		g2d.fillRect(125, 150, 250, 100);
+//		
+//		int[] xIzq = {125, 125, 50}; 
+//	    int[] yIzq = {150, 250, 250}; 
+//	    g2d.fillPolygon(xIzq, yIzq, 3);
+//	    
+//	    int[] xDer = {375, 375, 450};
+//	    int[] yDer = {150, 250, 250}; 
+//	    g2d.fillPolygon(xDer, yDer, 3);
+//	    
+//	    g2d.setColor(Color.decode("#df6900"));//chimenea
+//	    g2d.fillRect(300, 100, 40, 50);
+//	    
+//		g2d.setColor(Color.decode("#df2900"));
+//	    g2d.fillRect(290, 100, 60, 20);
+//	    
+//		g2d.setColor(Color.decode("#87a7a7"));
+//		g2d.fillRect(150, 270, 50, 50);//ventana 1
+//		g2d.fillRect(300, 270, 50, 50);//ventana 2
+//		
+//		//cruz ventana 1
+//		g2d.setColor(Color.decode("#fc5e14"));
+//		g2d.drawLine(150, 295, 200, 295);
+//		g2d.drawLine(175, 270, 175, 320);
+//		
+//		// Cruz ventana 2
+//		g2d.drawLine(300, 295, 350, 295); 
+//		g2d.drawLine(325, 270, 325, 320); 
+//
+//		//cercas
+//		g2d.setColor(Color.decode("#e1b759"));
+//		g2d.fillRect(95, 360, 15, 90);
+//		g2d.fillRect(65, 360, 15, 90);
+//		g2d.fillRect(35, 360, 15, 90);
+//		g2d.fillRect(5, 360, 15, 90);
+//		
+//		for (int x = 390; x <= 480; x +=30) {
+//		    g2d.fillRect(x, 360, 15, 90);
+//		}
+//		
+//		//for que hace la lineas de las calles
+//		g2d.setColor(Color.decode("#e4eb00"));
+//		
+//		for (int x = 0; x <= 500; x += 80) {
+//			g2d.fillRect(x, 545, 40, 20);
+//		}
+//		
+//    }
 
-		g2d.setColor(Color.decode("#14a20f"));//cesped
-		g2d.fillRect(0, 440, 500, 75);
+	public void paint(Graphics g) {
 		
-		g2d.setColor(Color.decode("#87a7a7"));//calle
-		g2d.fillRect(0, 515, 500, 85);
-		
-		g2d.setColor(Color.decode("#ecbb17"));//pared
-		g2d.fillRect(125, 250, 250, 200);
-		
-		g2d.setColor(Color.decode("#fc5e14"));//puerta
-		g2d.fillRect(220, 350, 60, 100);
-		
-		g2d.setColor(Color.decode("#503200"));//perilla
-		g2d.fillRect(270, 400, 5, 5);
-		
-		g2d.setColor(Color.decode("#c31106"));//techo
-		g2d.fillRect(125, 150, 250, 100);
-		
-		int[] xIzq = {125, 125, 50}; 
-	    int[] yIzq = {150, 250, 250}; 
-	    g2d.fillPolygon(xIzq, yIzq, 3);
-	    
-	    int[] xDer = {375, 375, 450};
-	    int[] yDer = {150, 250, 250}; 
-	    g2d.fillPolygon(xDer, yDer, 3);
-	    
-	    g2d.setColor(Color.decode("#df6900"));//chimenea
-	    g2d.fillRect(300, 100, 40, 50);
-	    
-		g2d.setColor(Color.decode("#df2900"));
-	    g2d.fillRect(290, 100, 60, 20);
-	    
-		g2d.setColor(Color.decode("#87a7a7"));
-		g2d.fillRect(150, 270, 50, 50);//ventana 1
-		g2d.fillRect(300, 270, 50, 50);//ventana 2
-		
-		//cruz ventana 1
-		g2d.setColor(Color.decode("#fc5e14"));
-		g2d.drawLine(150, 295, 200, 295);
-		g2d.drawLine(175, 270, 175, 320);
-		
-		// Cruz ventana 2
-		g2d.drawLine(300, 295, 350, 295); 
-		g2d.drawLine(325, 270, 325, 320); 
+		setSize(600, 500);
+		super.paint(g);
+	
+		Graphics2D g2d = (Graphics2D) g.create();
+	
+		g2d.setStroke(new BasicStroke(2));
 
-		//cercas
-		g2d.setColor(Color.decode("#e1b759"));
-		g2d.fillRect(95, 360, 15, 90);
-		g2d.fillRect(65, 360, 15, 90);
-		g2d.fillRect(35, 360, 15, 90);
-		g2d.fillRect(5, 360, 15, 90);
+		g2d.setColor(Color.decode("#15a9f3"));// fondo
+		g2d.fillRect(0, 50, 700, 500);
+
+		// nubes
+		g2d.setColor(Color.white);
+		g2d.fillRoundRect(50, 80, 90, 20, 20, 40);
+		g2d.fillRoundRect(200, 120, 90, 20, 20, 40);
+		g2d.fillRoundRect(300, 200, 90, 20, 20, 40);
+	
+		// montañas de fondo
+		g2d.setColor(Color.decode("#b1f5f2"));
+		g2d.fillRoundRect(100, 200, 100, 300, 100, 100);
+		g2d.fillRoundRect(300, 200, 100, 300, 100, 100);
+		g2d.fillRoundRect(400, 100, 150, 400, 150, 150);
 		
-		for (int x = 390; x <= 480; x +=30) {
-		    g2d.fillRect(x, 360, 15, 90);
+		g2d.setColor(Color.white);
+		g2d.fillRoundRect(370, 250, 90, 20, 20, 40);
+		
+		//montañas de fondo 1
+		g2d.setColor(Color.decode("#51e9f6"));
+		g2d.fillRoundRect(-50, 300, 200, 400, 200, 150);
+		g2d.fillRoundRect(225, 300, 200, 400, 200, 150);
+		g2d.fillRoundRect(425, 200, 200, 400, 200, 150);
+	
+		g2d.setColor(Color.white);
+		g2d.fillRoundRect(20, 270, 90, 20, 20, 40);
+
+		//piso
+		g2d.setColor(Color.decode("#f0c72c"));
+		g2d.fillRect(0, 400, 700, 100);
+		
+		g2d.setColor(Color.decode("#04ff00"));
+		g2d.fillRect(0, 400, 700, 20);
+		
+		// cubos
+		for (int y = 370; y >= 280; y -= 30) {
+			int x = 480, ancho = 30, largo = 30;
+			
+			g2d.setColor(Color.decode("#f0c72c"));
+			g2d.fillRect(x, y, ancho, largo);
+			g2d.setColor(Color.BLACK);
+			g2d.drawRect(x, y, ancho, largo);
 		}
 		
-		//for que hace la lineas de las calles
-		g2d.setColor(Color.decode("#e4eb00"));
-		for (int x = 0; x <= 500; x += 80) {
-			g2d.fillRect(x, 545, 40, 20);
-		}
+		//Tubos
+		g2d.setColor(Color.BLACK);
+		g2d.drawRect(190, 320, 70, 20);
+		g2d.drawRect(200, 320, 50, 80);
+		g2d.drawRect(520, 340, 70, 20);
+		g2d.drawRect(530, 340, 50, 60);
 		
-    }
+		//cubos
+		for (int x = 510; x <= 600; x += 30) {
+			int y = 280, ancho = 30, largo = 30;
+			
+			g2d.setColor(Color.decode("#f0c72c"));
+			g2d.fillRect(x, y, ancho, largo);
+			g2d.setColor(Color.BLACK);
+			g2d.drawRect(x, y, ancho, largo);
+		}
+
+		// tubos
+		g2d.setColor(Color.decode("#7cf651"));
+		g2d.fillRect(190, 320, 70, 20);
+		g2d.fillRect(200, 320, 50, 80);
+
+		g2d.fillRect(520, 340, 70, 20);
+		g2d.fillRect(530, 340, 50, 60);
+
+		try {
+			BufferedImage image = ImageIO.read(new File("mario2.png"));
+			g2d.drawImage(image, 100, 330,50, 70, null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
     
     public JPanel loginImagen() {
         JPanel contenedor = new JPanel();
