@@ -26,6 +26,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
@@ -539,6 +540,8 @@ public class login extends JFrame {
 		botonAcceder.setBounds(190, 360, 120, 40);
 
 		botonAcceder.addActionListener(new ActionListener() {
+
+			Boolean bandera1 =false, bandera2 =false;
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -546,6 +549,7 @@ public class login extends JFrame {
 					email.setBorder(BorderFactory.createLineBorder(Color.red, 4));
 				} else {
 					email.setBorder(BorderFactory.createLineBorder(Color.green, 4));
+					bandera1 = true;
 				}
 
 				String contraseña = new String(password.getPassword());
@@ -554,8 +558,19 @@ public class login extends JFrame {
 					password.setBorder(BorderFactory.createLineBorder(Color.red, 4));
 				}else {
 					password.setBorder(BorderFactory.createLineBorder(Color.green, 4));
-
+					bandera2 = true;
 				}
+				
+				if(bandera1 && bandera2) {
+					if(email.getText().equals("gabriel@alu")) {
+						if (contraseña.equals("12345")) {
+							JOptionPane.showMessageDialog(null, "Inicio de secion exitoso", "Hello", JOptionPane.DEFAULT_OPTION);
+						}else
+							JOptionPane.showMessageDialog(null, "INICIO DE SECION ERRONEO", "Fallido", JOptionPane.CANCEL_OPTION);
+					}else
+						JOptionPane.showMessageDialog(null, "INICIO DE SECION ERRONEO", "Fallido", JOptionPane.CANCEL_OPTION);
+				}else
+					JOptionPane.showMessageDialog(null, "INICIO DE SECION ERRONEO", "Fallido", JOptionPane.CANCEL_OPTION);
 			}
 		});
 		panelIzquierdo.add(botonAcceder);
@@ -787,10 +802,14 @@ public class login extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				Boolean bandera1 =false, bandera2 =false;
+				
 				if (email.getText().equals("")) {
 					email.setBorder(BorderFactory.createLineBorder(Color.red, 4));
 				} else {
 					email.setBorder(BorderFactory.createLineBorder(Color.green, 4));
+					bandera1 = true;
 				}
 
 				String contraseña = new String(password.getPassword());
@@ -801,6 +820,7 @@ public class login extends JFrame {
 
 				} else {
 					password.setBorder(BorderFactory.createLineBorder(Color.green, 4));
+					bandera2 = true;
 				}
 				
 				if (comentario1.getText().equals("")) {
@@ -808,6 +828,17 @@ public class login extends JFrame {
 				} else {
 					comentario1.setBorder(BorderFactory.createLineBorder(Color.green, 4));
 				}
+				
+				if(bandera1 && bandera2) {
+					if(email.getText().equals("gabriel@alu")) {
+						if (contraseña.equals("12345")) {
+							JOptionPane.showMessageDialog(null, "Inicio de secion exitoso", "Hello", JOptionPane.DEFAULT_OPTION);
+						}else
+							JOptionPane.showMessageDialog(null, "INICIO DE SECION ERRONEO", "Fallido", JOptionPane.CANCEL_OPTION);
+					}else
+						JOptionPane.showMessageDialog(null, "INICIO DE SECION ERRONEO", "Fallido", JOptionPane.CANCEL_OPTION);
+				}else
+					JOptionPane.showMessageDialog(null, "INICIO DE SECION ERRONEO", "Fallido", JOptionPane.CANCEL_OPTION);
 				
 			}
 		});
