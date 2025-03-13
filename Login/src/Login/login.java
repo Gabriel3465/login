@@ -7,11 +7,14 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -38,7 +41,7 @@ public class login extends JFrame {
     public login() {
     	
     	setVisible(true);
-    	setSize(500, 600);
+    	setSize(1000, 800);
     	setLocationRelativeTo(null);
     	
     	setTitle("Login");    	
@@ -47,9 +50,9 @@ public class login extends JFrame {
     	setMinimumSize(new Dimension(400, 400));
     	
 //    	this.add(this.logins());
-//    	this.add(this.registro());
 //    	this.add(this.scrooll_pane());
-//    	this.add(this.loginImagen());
+    	this.add(this.loginImagen());
+    	this.add(this.registro());
     	
     	//Barra principal de opciones////////////////////////////////////////////////////
     	JMenuBar barra = new JMenuBar();
@@ -243,124 +246,129 @@ public class login extends JFrame {
 //		
 //    }
     
-public void paint(Graphics g) {
-		
-		setSize(600, 500);
-		super.paint(g);
-	
-		Graphics2D g2d = (Graphics2D) g.create();
-	
-		g2d.setStroke(new BasicStroke(2));
-
-		// fondo
-		g2d.setColor(Color.decode("#15a9f3"));
-		g2d.fillRect(0, 50, 700, 500);
-
-		//montaña
-		g2d.setColor(Color.BLACK);
-
-		g2d.fillRoundRect(285, 225, 20, 275, 8, 8);
-		g2d.setColor(Color.decode("#f5b7b1"));
-		g2d.fillRoundRect(190, 200, 100, 300, 8, 8);
-		
-		g2d.setColor(Color.BLACK);
-		g2d.drawRoundRect(190, 200, 100, 180, 8, 8);
-		
-		
-		//montaña 2
-		g2d.fillRoundRect(205, 279, 20, 101, 8, 8);
-		
-		g2d.setColor(Color.decode("#aed6f1"));
-		g2d.fillRoundRect(100, 270, 110, 110, 8, 8);
-		
-		g2d.setColor(Color.BLACK);
-		g2d.drawRoundRect(100, 270, 110, 110, 8, 8);
-		
-
-		
-		//montaña 3
-		g2d.setColor(Color.decode("#abebc6"));
-		g2d.fillRoundRect(500, 270, 110, 110, 8, 8);
-		
-		g2d.setColor(Color.BLACK);
-		g2d.drawRoundRect(500, 270, 110, 110, 8, 8);
-		
-		g2d.setColor(Color.decode("#566573"));
-		g2d.fillOval(510, 280, 10, 10);
-		g2d.fillOval(510, 360, 10, 10);
-		g2d.fillOval(110, 280, 10, 10);
-		g2d.fillOval(110, 360, 10, 10);
-		g2d.fillOval(190, 360, 10, 10);
-		g2d.fillOval(190, 280, 10, 10);
-		g2d.fillOval(190, 360, 10, 10);
-		g2d.fillOval(200, 210, 10, 10);
-		g2d.fillOval(270, 210, 10, 10);
-		g2d.fillOval(270, 360, 10, 10);
-		
-		g2d.setColor(Color.BLACK);
-		g2d.drawOval(510, 280, 10, 10);
-		g2d.drawOval(510, 360, 10, 10);
-		g2d.drawOval(110, 280, 10, 10);
-		g2d.drawOval(110, 360, 10, 10);
-		g2d.drawOval(190, 360, 10, 10);
-		g2d.drawOval(190, 280, 10, 10);
-		g2d.drawOval(190, 360, 10, 10);
-		g2d.drawOval(200, 210, 10, 10);
-		g2d.drawOval(270, 210, 10, 10);
-		g2d.drawOval(270, 360, 10, 10);
-
-		//tubo
-		g2d.setColor(Color.decode("#58d68d"));
-		g2d.fillRect(350, 300, 50, 80);
-		g2d.fillRect(340, 275, 70, 25);
-		
-		g2d.setColor(Color.black);
-		g2d.drawRect(350, 300, 50, 80);
-		g2d.drawRect(340, 275, 70, 25);
-
-		//PISO
-		for (int x = 0; x <= 600; x += 30) {
-			for (int y = 391; y <= 510; y += 30) {
-				int ancho = 30, largo = 30;
-
-				g2d.setColor(Color.decode("#f0c72c"));
-				g2d.fillRect(x, y, ancho, largo);
-				g2d.setColor(Color.BLACK);
-				g2d.drawRect(x, y, ancho, largo);
-			}
-		}
-		int ancho = 30, largo = 30;
-
-		g2d.setColor(Color.decode("#f0c72c"));
-		g2d.fillRect(100, 100, ancho, largo);
-		g2d.fillRect(130, 100, ancho, largo);
-		g2d.fillRect(30, 200, ancho, largo);
-		g2d.fillRect(520, 200, ancho, largo);
-		
-		g2d.setColor(Color.BLACK);
-		g2d.drawRect(100, 100, ancho, largo);
-		g2d.drawRect(130, 100, ancho, largo);
-		g2d.drawRect(30, 200, ancho, largo);
-		g2d.drawRect(520, 200, ancho, largo);
-
-		g2d.setColor(Color.decode("#909352"));
-		g2d.fillRect(0, 381, 700, 10);
-
-		try {
-			BufferedImage image = ImageIO.read(new File("mario3.png"));
-			g2d.drawImage(image, 230, 321, 40, 60, null);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		try {
-			BufferedImage image = ImageIO.read(new File("planta.png"));
-			g2d.drawImage(image, 350, 218, 50, 60, null);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-	}
+//public void paint(Graphics g) {
+//		
+//		setSize(600, 500);
+//		super.paint(g);
+//	
+//		Graphics2D g2d = (Graphics2D) g.create();
+//	
+//		g2d.setStroke(new BasicStroke(2));
+//
+//		// fondo
+//		g2d.setColor(Color.decode("#15a9f3"));
+//		g2d.fillRect(0, 50, 700, 500);
+//
+//		//montaña
+//		g2d.setColor(Color.BLACK);
+//
+//		g2d.fillRoundRect(285, 225, 20, 275, 8, 8);
+//		g2d.setColor(Color.decode("#f5b7b1"));
+//		g2d.fillRoundRect(190, 200, 100, 300, 8, 8);
+//		
+//		g2d.setColor(Color.BLACK);
+//		g2d.drawRoundRect(190, 200, 100, 180, 8, 8);
+//		
+//		
+//		//montaña 2
+//		g2d.fillRoundRect(205, 279, 20, 101, 8, 8);
+//		
+//		g2d.setColor(Color.decode("#aed6f1"));
+//		g2d.fillRoundRect(100, 270, 110, 110, 8, 8);
+//		
+//		g2d.setColor(Color.BLACK);
+//		g2d.drawRoundRect(100, 270, 110, 110, 8, 8);
+//		
+//
+//		
+//		//montaña 3
+//		g2d.setColor(Color.decode("#abebc6"));
+//		g2d.fillRoundRect(500, 270, 110, 110, 8, 8);
+//		
+//		g2d.setColor(Color.BLACK);
+//		g2d.drawRoundRect(500, 270, 110, 110, 8, 8);
+//		
+//		g2d.setColor(Color.decode("#566573"));
+//		g2d.fillOval(510, 280, 10, 10);
+//		g2d.fillOval(510, 360, 10, 10);
+//		g2d.fillOval(110, 280, 10, 10);
+//		g2d.fillOval(110, 360, 10, 10);
+//		g2d.fillOval(190, 360, 10, 10);
+//		g2d.fillOval(190, 280, 10, 10);
+//		g2d.fillOval(190, 360, 10, 10);
+//		g2d.fillOval(200, 210, 10, 10);
+//		g2d.fillOval(270, 210, 10, 10);
+//		g2d.fillOval(270, 360, 10, 10);
+//		
+//		g2d.setColor(Color.BLACK);
+//		g2d.drawOval(510, 280, 10, 10);
+//		g2d.drawOval(510, 360, 10, 10);
+//		g2d.drawOval(110, 280, 10, 10);
+//		g2d.drawOval(110, 360, 10, 10);
+//		g2d.drawOval(190, 360, 10, 10);
+//		g2d.drawOval(190, 280, 10, 10);
+//		g2d.drawOval(190, 360, 10, 10);
+//		g2d.drawOval(200, 210, 10, 10);
+//		g2d.drawOval(270, 210, 10, 10);
+//		g2d.drawOval(270, 360, 10, 10);
+//
+//		//tubo
+//		g2d.setColor(Color.decode("#58d68d"));
+//		g2d.fillRect(350, 300, 50, 80);
+//		g2d.fillRect(340, 275, 70, 25);
+//		
+//		g2d.setColor(Color.black);
+//		g2d.drawRect(350, 300, 50, 80);
+//		g2d.drawRect(340, 275, 70, 25);
+//
+//		//PISO
+//		for (int x = 0; x <= 600; x += 30) {
+//			for (int y = 391; y <= 510; y += 30) {
+//				int ancho = 30, largo = 30;
+//
+//				g2d.setColor(Color.decode("#f0c72c"));
+//				g2d.fillRect(x, y, ancho, largo);
+//				g2d.setColor(Color.BLACK);
+//				g2d.drawRect(x, y, ancho, largo);
+//			}
+//		}
+//		
+//		int ancho = 30, largo = 30;
+//
+//		g2d.setColor(Color.decode("#f0c72c"));
+//		g2d.fillRect(100, 100, ancho, largo);
+//		g2d.fillRect(130, 100, ancho, largo);
+//		g2d.fillRect(30, 200, ancho, largo);
+//		g2d.fillRect(520, 200, ancho, largo);
+//		
+//		g2d.setColor(Color.BLACK);
+//		g2d.drawRect(100, 100, ancho, largo);
+//		g2d.drawRect(130, 100, ancho, largo);
+//		g2d.drawRect(30, 200, ancho, largo);
+//		g2d.drawRect(520, 200, ancho, largo);
+//
+//		g2d.setColor(Color.decode("#909352"));
+//		g2d.fillRect(0, 381, 700, 10);
+//
+//		try {
+//			BufferedImage image = ImageIO.read(new File("mario3.png"));
+//			g2d.drawImage(image, 230, 321, 40, 60, null);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		try {
+//			BufferedImage image = ImageIO.read(new File("planta.png"));
+//			g2d.drawImage(image, 350, 218, 50, 60, null);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		g2d.setColor(Color.BLACK);
+//
+//		g2d.fillOval(100, 391, 10, 0);
+//
+//	}
 
 //	public void paint(Graphics g) {
 //		
@@ -453,7 +461,7 @@ public void paint(Graphics g) {
     public JPanel loginImagen() {
         JPanel contenedor = new JPanel();
         contenedor.setLayout(null); // Desactivar layout para colocar los paneles manualmente
-        contenedor.setSize(1000, 800);
+        contenedor.setSize(500, 800);
 
         // Panel izquierdo (azul)
         JPanel panelIzquierdo = new JPanel();
@@ -462,17 +470,18 @@ public void paint(Graphics g) {
         panelIzquierdo.setLayout(null);
         
         // Panel derecho
-        JPanel panelDerecho = new JPanel();
-        panelDerecho.setBounds(500, 0, 500, 800);
-        panelDerecho.setLayout(null);
+//        JPanel panelDerecho = new JPanel();
+//        panelDerecho.setBounds(500, 0, 500, 800);
+//        panelDerecho.setOpaque(false);
+//        panelDerecho.setLayout(null);
         
-        // imagen de fondo
-        ImageIcon fondoIcono = new ImageIcon("fondoDeInterfaz1.png");
-        Image imagenEscalada = fondoIcono.getImage().getScaledInstance(500, 800, Image.SCALE_SMOOTH);
-        JLabel fondoLabel = new JLabel(new ImageIcon(imagenEscalada));
-        fondoLabel.setBounds(0, 0, 500, 800); // Ajustar al tamaño del panel
-        panelDerecho.add(fondoLabel);
-        
+//        // imagen de fondo
+//        ImageIcon fondoIcono = new ImageIcon("fondoDeInterfaz1.png");
+//        Image imagenEscalada = fondoIcono.getImage().getScaledInstance(500, 800, Image.SCALE_SMOOTH);
+//        JLabel fondoLabel = new JLabel(new ImageIcon(imagenEscalada));
+//        fondoLabel.setBounds(0, 0, 500, 800); // Ajustar al tamaño del panel
+//        panelDerecho.add(fondoLabel);
+//        
         //imagen de logo
         ImageIcon fondoLogo = new ImageIcon("logo.png");
         Image imagenEscalada3 = fondoLogo.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
@@ -524,12 +533,33 @@ public void paint(Graphics g) {
         password.setBounds(160, 260, 200, 40);
         panelIzquierdo.add(password);
 
-        // Botón de acceder
-        JButton botonAcceder = new JButton("Acceder");
-        botonAcceder.setFont(new Font("Bahnschrift", Font.BOLD, 15));
-        botonAcceder.setBounds(190, 360, 120, 40);
-        panelIzquierdo.add(botonAcceder);
-        
+		// Botón de acceder
+		JButton botonAcceder = new JButton("Acceder");
+		botonAcceder.setFont(new Font("Bahnschrift", Font.BOLD, 15));
+		botonAcceder.setBounds(190, 360, 120, 40);
+
+		botonAcceder.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (email.getText().equals("")) {
+					email.setBorder(BorderFactory.createLineBorder(Color.red, 4));
+				} else {
+					email.setBorder(BorderFactory.createLineBorder(Color.green, 4));
+				}
+
+				String contraseña = new String(password.getPassword());
+
+				if (contraseña.equals("")) {
+					password.setBorder(BorderFactory.createLineBorder(Color.red, 4));
+				}else {
+					password.setBorder(BorderFactory.createLineBorder(Color.green, 4));
+
+				}
+			}
+		});
+		panelIzquierdo.add(botonAcceder);
+
         JLabel crearCuenta = new JLabel("<html>¿No tienes cuenta? <u>Crear cuenta</u></html>	");
         crearCuenta.setForeground(Color.WHITE);
         crearCuenta.setSize(200, 20);
@@ -553,7 +583,7 @@ public void paint(Graphics g) {
 
         // Agregar ambos paneles al contenedor
         contenedor.add(panelIzquierdo);
-        contenedor.add(panelDerecho);
+//        contenedor.add(panelDerecho);
 
         return contenedor;
     }
@@ -609,7 +639,19 @@ public void paint(Graphics g) {
         botonAcceder.setSize(120, 40);
         botonAcceder.setLocation(190, 300);
         botonAcceder.setFont(new Font("Bahnschrift", Font.BOLD, 15));
+        
+        botonAcceder.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(email.getText().equals("")){
+					email.setBorder(BorderFactory.createLineBorder(Color.red,3));
+				}
+			}
+		});
+        
         elPanel.add(botonAcceder);
+        
         
         JLabel CrearCuenta = new JLabel("¿No tienes cuenta? Crear cuenta");
         CrearCuenta.setSize(200, 20);
@@ -682,11 +724,6 @@ public void paint(Graphics g) {
         OlvidoContrasena.setFont(new Font("Bahnschrift", Font.ITALIC, 12));
         registro.add(OlvidoContrasena);
         
-        JButton botonAcceder = new JButton("Acceder");
-        botonAcceder.setSize(120, 40);
-        botonAcceder.setLocation(690, 300);
-        botonAcceder.setFont(new Font("Bahnschrift", Font.BOLD, 15));
-        registro.add(botonAcceder);
         
         JLabel CrearCuenta = new JLabel("¿No tienes cuenta? Crear cuenta");
         CrearCuenta.setSize(200, 20);
@@ -741,17 +778,43 @@ public void paint(Graphics g) {
         comentario1.setLocation(570, 620);
         registro.add(comentario1);
         
+        JButton botonAcceder = new JButton("Acceder");
+        botonAcceder.setSize(120, 40);
+        botonAcceder.setLocation(690, 300);
+        botonAcceder.setFont(new Font("Bahnschrift", Font.BOLD, 15));
         
+        botonAcceder.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (email.getText().equals("")) {
+					email.setBorder(BorderFactory.createLineBorder(Color.red, 4));
+				} else {
+					email.setBorder(BorderFactory.createLineBorder(Color.green, 4));
+				}
+
+				String contraseña = new String(password.getPassword());
+
+				if (contraseña.equals("")) {
+
+					password.setBorder(BorderFactory.createLineBorder(Color.red, 4));
+
+				} else {
+					password.setBorder(BorderFactory.createLineBorder(Color.green, 4));
+				}
+				
+				if (comentario1.getText().equals("")) {
+					comentario1.setBorder(BorderFactory.createLineBorder(Color.red, 4));
+				} else {
+					comentario1.setBorder(BorderFactory.createLineBorder(Color.green, 4));
+				}
+				
+			}
+		});
+        registro.add(botonAcceder);
         
-        
-        
-    	
-    	
+       
     	return registro;
-    	
-    	
-    	
-    	
     }
     
     public JPanel scrooll_pane() {
