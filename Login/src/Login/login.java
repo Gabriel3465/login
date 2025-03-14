@@ -53,7 +53,7 @@ public class login extends JFrame {
 //    	this.add(this.logins());
 //    	this.add(this.scrooll_pane());
     	this.add(this.loginImagen());
-    	this.add(this.registro());
+//    	this.add(this.registro());
     	
     	//Barra principal de opciones////////////////////////////////////////////////////
     	JMenuBar barra = new JMenuBar();
@@ -459,6 +459,22 @@ public class login extends JFrame {
 //
 //	}
     
+	public void router(String route) {
+		this.getContentPane().removeAll();
+	
+		if (route.equals("login")) {
+			this.add(this.loginImagen());
+		}
+		
+		if (route.equals("register")) {
+			this.add(this.registro());
+		}
+		
+		this.repaint();
+		this.revalidate();
+		
+	}
+
     public JPanel loginImagen() {
         JPanel contenedor = new JPanel();
         contenedor.setLayout(null); // Desactivar layout para colocar los paneles manualmente
@@ -596,6 +612,23 @@ public class login extends JFrame {
         help.setFont(new Font("Bahnschrift", Font.ITALIC, 12));
         panelIzquierdo.add(help);
 
+        
+        JButton irRegistro = new JButton("Ir a registro");
+        irRegistro.setFont(new Font("Bahnschrift", Font.BOLD, 15));
+        irRegistro.setBounds(190, 600, 120, 40);
+        
+        irRegistro.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				router("register");
+			}
+		});
+        
+		panelIzquierdo.add(irRegistro);
+
+        
         // Agregar ambos paneles al contenedor
         contenedor.add(panelIzquierdo);
 //        contenedor.add(panelDerecho);
@@ -844,6 +877,20 @@ public class login extends JFrame {
 		});
         registro.add(botonAcceder);
         
+        JButton irLogin = new JButton("Ir a login");
+        irLogin.setFont(new Font("Bahnschrift", Font.BOLD, 15));
+        irLogin.setBounds(800, 400, 120, 40);
+        
+        irLogin.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				router("login");
+			}
+		});
+        registro.add(irLogin);
+
        
     	return registro;
     }
