@@ -105,6 +105,33 @@ public class login extends JFrame {
     	opciones.add(habilitarNotificaciones);
     	
  
+    	//Opciones 3////////////////////////////////////////////////
+    	JMenu cuenta = new JMenu("Cuentas");
+    	barra.add(cuenta);
+    	
+    	//Subopciones/////////////////////////////////
+		JMenuItem registro1 = new JMenuItem("Registro");
+		registro1.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				router("register");
+			}
+		});
+		cuenta.add(registro1);
+    	JMenuItem login1 = new JMenuItem("Login");
+    	
+    	login1.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				router("login");
+			}
+		});
+    	cuenta.add(login1);
+    	
     	this.setJMenuBar(barra);
     	
     	
