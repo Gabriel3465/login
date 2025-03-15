@@ -70,7 +70,7 @@ public class login extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				router("register");
+				router("alta");
 			}
 		});
 		usuarios.add(alta);
@@ -171,7 +171,7 @@ public class login extends JFrame {
 
 		this.setJMenuBar(barra);
 		
-		JMenuItem recuperacionCuenta = new JMenuItem("Login");
+		JMenuItem recuperacionCuenta = new JMenuItem("recuperacion Cuenta");
 		recuperacionCuenta.addActionListener(new ActionListener() {
 
 			@Override
@@ -303,7 +303,7 @@ public class login extends JFrame {
 		panelPrincipal.setLocation(0, 0);
 		panelPrincipal.setLayout(null);// quita todo el molde
 
-		JLabel etiqueta1R = new JLabel("Consultar Cuenta");
+		JLabel etiqueta1R = new JLabel("Consultar datos");
 		etiqueta1R.setSize(200, 40);
 		etiqueta1R.setLocation(140, 20);
 		etiqueta1R.setHorizontalAlignment(JLabel.CENTER);
@@ -323,7 +323,7 @@ public class login extends JFrame {
 		panelPrincipal.setLocation(0, 0);
 		panelPrincipal.setLayout(null);// quita todo el molde
 
-		JLabel etiqueta1R = new JLabel("¿Cómo crear un usuario?");
+		JLabel etiqueta1R = new JLabel("¿Como crear un usuario?");
 		etiqueta1R.setSize(200, 40);
 		etiqueta1R.setLocation(140, 20);
 		etiqueta1R.setHorizontalAlignment(JLabel.CENTER);
@@ -343,7 +343,7 @@ public class login extends JFrame {
 		panelPrincipal.setLocation(0, 0);
 		panelPrincipal.setLayout(null);// quita todo el molde
 
-		JLabel etiqueta1R = new JLabel("¿Cómo acceder al sistema?");
+		JLabel etiqueta1R = new JLabel("¿Como acceder al sistema?");
 		etiqueta1R.setSize(200, 40);
 		etiqueta1R.setLocation(140, 20);
 		etiqueta1R.setHorizontalAlignment(JLabel.CENTER);
