@@ -1,26 +1,19 @@
 package Login;
 
-import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JCheckBoxMenuItem;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -34,14 +27,24 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
 public class login extends JFrame {
+	private JPanel contentPane;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTable table;
+
+
 
 	public login() {
-
 		setVisible(true);
-		setSize(1000, 800);
+		setSize(500, 800);
 		setLocationRelativeTo(null);
 
 		setTitle("Login");
@@ -49,17 +52,52 @@ public class login extends JFrame {
 		setMaximumSize(new Dimension(700, 700));
 		setMinimumSize(new Dimension(400, 400));
 
-//    	this.add(this.logins());
-//    	this.add(this.scrooll_pane());
     	this.add(this.loginImagen());
-//    	this.add(this.registro());
-//		this.add(this.recuperacionCuenta());
 
-		// Barra principal de
-		// opciones////////////////////////////////////////////////////
+		// Barra principal de opciones/////////
 		JMenuBar barra = new JMenuBar();
-
+		
 		// Opciones 1////////////////////////////////////////////////
+		JMenu cuenta = new JMenu("Cuentas");
+		barra.add(cuenta);
+
+		// Subopciones/////////////////////////////////
+		JMenuItem login1 = new JMenuItem("Login");
+		login1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				router("login");
+			}
+		});
+		cuenta.add(login1);
+		
+		JMenuItem registro1 = new JMenuItem("Registro");
+		registro1.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				router("register");
+			}
+		});
+		cuenta.add(registro1);
+		
+
+		
+		JMenuItem recuperacionCuenta = new JMenuItem("Recuperacion Cuenta");
+		recuperacionCuenta.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				router("recuperacionCuenta");
+			}
+		});
+		cuenta.add(recuperacionCuenta);
+		
+		// Opciones 2////////////////////////////////////////////////
 		JMenu usuarios = new JMenu("Usuarios");
 		barra.add(usuarios);
 
@@ -88,7 +126,7 @@ public class login extends JFrame {
 
 		this.setJMenuBar(barra);
 		
-		JMenuItem consultar = new JMenuItem("Login");
+		JMenuItem consultar = new JMenuItem("Consultar usuario");
 		consultar.addActionListener(new ActionListener() {
 
 			@Override
@@ -98,10 +136,8 @@ public class login extends JFrame {
 			}
 		});
 		usuarios.add(consultar);
-
-		this.setJMenuBar(barra);
 		
-		// Opciones 2////////////////////////////////////////////////
+		// Opciones 3////////////////////////////////////////////////
 		JMenu ayuda = new JMenu("Ayuda");
 		barra.add(ayuda);
 
@@ -128,7 +164,7 @@ public class login extends JFrame {
 		});
 		ayuda.add(comoAcceder);
 
-		this.setJMenuBar(barra);
+//		this.setJMenuBar(barra);
 
 		JMenuItem olvidoContrasena = new JMenuItem("¿Qué pasa si olvidé mi contraseña?");
 		olvidoContrasena.addActionListener(new ActionListener() {
@@ -142,48 +178,6 @@ public class login extends JFrame {
 		ayuda.add(olvidoContrasena);
 
 		this.setJMenuBar(barra);
-		// Opciones 3////////////////////////////////////////////////
-		JMenu cuenta = new JMenu("Cuentas");
-		barra.add(cuenta);
-
-		// Subopciones/////////////////////////////////
-		JMenuItem registro1 = new JMenuItem("Registro");
-		registro1.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				router("register");
-			}
-		});
-		cuenta.add(registro1);
-		
-		JMenuItem login1 = new JMenuItem("Login");
-		login1.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				router("login");
-			}
-		});
-		cuenta.add(login1);
-
-		this.setJMenuBar(barra);
-		
-		JMenuItem recuperacionCuenta = new JMenuItem("recuperacion Cuenta");
-		recuperacionCuenta.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				router("recuperacionCuenta");
-			}
-		});
-		cuenta.add(recuperacionCuenta);
-
-		this.setJMenuBar(barra);
-
 		this.repaint();
 
 	}
@@ -232,145 +226,465 @@ public class login extends JFrame {
 
 	}
 
-	public JPanel recuperacionCuenta() {
+	public Component recuperacionCuenta() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 500, 800);
+		setLocationRelativeTo(null);
 
-		JPanel registro = new JPanel();
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.decode("#17A29D"));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
-		registro.setBackground(Color.decode("#DCC8A0"));
-		registro.setOpaque(true);
-		registro.setSize(1000, 800);
-		registro.setLocation(0, 0);
-		registro.setLayout(null);// quita todo el molde
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Recuperación de cuenta");
+		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Rockwell", Font.PLAIN, 20));
+		lblNewLabel.setBounds(89, 42, 298, 21);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Ingrese su correo:");
+		lblNewLabel_1.setForeground(new Color(255, 255, 255));
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_1.setBounds(98, 139, 247, 21);
+		contentPane.add(lblNewLabel_1);
+		
+		textField = new JTextField();
+		textField.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		textField.setBounds(99, 172, 246, 25);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblNewLabel_1_1 = new JLabel("Ingrese el codigo:");
+		lblNewLabel_1_1.setForeground(Color.WHITE);
+		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_1_1.setBounds(98, 268, 247, 21);
+		contentPane.add(lblNewLabel_1_1);
+		
+		textField_1 = new JTextField();
+		textField_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		textField_1.setColumns(10);
+		textField_1.setBounds(98, 299, 246, 25);
+		contentPane.add(textField_1);
+		
+		JLabel lblNewLabel_1_2 = new JLabel("Se le enviara un codigo al correo");
+		lblNewLabel_1_2.setForeground(Color.WHITE);
+		lblNewLabel_1_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_1_2.setBounds(98, 207, 247, 21);
+		contentPane.add(lblNewLabel_1_2);
+		
+		JButton btnNewButton = new JButton("Volver");
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnNewButton.setBounds(10, 10, 85, 21);
+		
+		btnNewButton.addActionListener(new ActionListener() {
 
-		JLabel etiqueta1R = new JLabel("Recuperacion de cuenta");
-		etiqueta1R.setSize(200, 40);
-		etiqueta1R.setLocation(140, 20);
-		etiqueta1R.setHorizontalAlignment(JLabel.CENTER);
-		etiqueta1R.setFont(new Font("Bahnschrift", Font.BOLD, 20));
-		registro.add(etiqueta1R);
+			@Override
+			public void actionPerformed(ActionEvent e) {
 
-		return registro;
-
+				router("login");
+			}
+		});
+		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Confirmar codigo");
+//		btnNewButton_1.setBackground(new Color(0, 128, 128));
+		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnNewButton_1.setBounds(167, 379, 127, 32);
+		return contentPane.add(btnNewButton_1);
 	}
 
-	public JPanel alta() {
+	public Component alta() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 500, 800);
+		setLocationRelativeTo(null);
+		
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.decode("#f35131"));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
-		JPanel registro = new JPanel();
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Alta de usuario");
+		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Rockwell", Font.PLAIN, 20));
+		lblNewLabel.setBounds(85, 74, 298, 21);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Nombre:");
+		lblNewLabel_1.setForeground(new Color(255, 255, 255));
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_1.setBounds(98, 139, 247, 21);
+		contentPane.add(lblNewLabel_1);
+		
+		textField = new JTextField();
+		textField.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		textField.setBounds(99, 172, 246, 25);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblNewLabel_1_1 = new JLabel("Contraseña:");
+		lblNewLabel_1_1.setForeground(Color.WHITE);
+		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_1_1.setBounds(98, 299, 247, 21);
+		contentPane.add(lblNewLabel_1_1);
+		
+		textField_1 = new JTextField();
+		textField_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		textField_1.setColumns(10);
+		textField_1.setBounds(99, 330, 246, 25);
+		contentPane.add(textField_1);
+		
+		JButton btnNewButton = new JButton("Volver");
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnNewButton.setBounds(10, 10, 85, 21);
+		btnNewButton.addActionListener(new ActionListener() {
 
-		registro.setBackground(Color.decode("#909352"));
-		registro.setOpaque(true);
-		registro.setSize(1000, 800);
-		registro.setLocation(0, 0);
-		registro.setLayout(null);// quita todo el molde
+			@Override
+			public void actionPerformed(ActionEvent e) {
 
-		JLabel etiqueta1R = new JLabel("Darse de alta");
-		etiqueta1R.setSize(200, 40);
-		etiqueta1R.setLocation(140, 20);
-		etiqueta1R.setHorizontalAlignment(JLabel.CENTER);
-		etiqueta1R.setFont(new Font("Bahnschrift", Font.BOLD, 20));
-		registro.add(etiqueta1R);
-
-		return registro;
+				router("login");
+			}
+		});
+		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Registrar");
+		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnNewButton_1.setBounds(173, 514, 127, 32);
+		contentPane.add(btnNewButton_1);
+		
+		JLabel lblNewLabel_1_2 = new JLabel("Correo:");
+		lblNewLabel_1_2.setForeground(Color.WHITE);
+		lblNewLabel_1_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_1_2.setBounds(98, 216, 247, 21);
+		contentPane.add(lblNewLabel_1_2);
+		
+		textField_2 = new JTextField();
+		textField_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		textField_2.setColumns(10);
+		textField_2.setBounds(99, 247, 246, 25);
+		contentPane.add(textField_2);
+		
+		JLabel lblNewLabel_1_1_1 = new JLabel("Confirmar contraseña:");
+		lblNewLabel_1_1_1.setForeground(Color.WHITE);
+		lblNewLabel_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_1_1_1.setBounds(98, 375, 247, 21);
+		contentPane.add(lblNewLabel_1_1_1);
+		
+		textField_3 = new JTextField();
+		textField_3.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		textField_3.setColumns(10);
+		textField_3.setBounds(99, 406, 246, 25);
+		return contentPane.add(textField_3);
 	}
 
-	public JPanel baja() {
+	public Component baja() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 500, 800);
+		setLocationRelativeTo(null);
+		
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.decode("#20287c"));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
-		JPanel registro = new JPanel();
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Dar de baja a un usuario");
+		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Rockwell", Font.PLAIN, 20));
+		lblNewLabel.setBounds(85, 74, 298, 21);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Ingrese su correo:");
+		lblNewLabel_1.setForeground(new Color(255, 255, 255));
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_1.setBounds(98, 139, 247, 21);
+		contentPane.add(lblNewLabel_1);
+		
+		textField = new JTextField();
+		textField.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		textField.setBounds(99, 172, 246, 25);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblNewLabel_1_1 = new JLabel("Confirme contraseña para eliminar:");
+		lblNewLabel_1_1.setForeground(Color.WHITE);
+		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_1_1.setBounds(98, 346, 247, 21);
+		contentPane.add(lblNewLabel_1_1);
+		
+		textField_1 = new JTextField();
+		textField_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		textField_1.setColumns(10);
+		textField_1.setBounds(99, 377, 246, 25);
+		contentPane.add(textField_1);
+		
+		JButton btnNewButton = new JButton("Volver");
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnNewButton.setBounds(10, 10, 85, 21);
+		btnNewButton.addActionListener(new ActionListener() {
 
-		registro.setBackground(Color.decode("#938552"));
-		registro.setOpaque(true);
-		registro.setSize(1000, 800);
-		registro.setLocation(0, 0);
-		registro.setLayout(null);// quita todo el molde
+			@Override
+			public void actionPerformed(ActionEvent e) {
 
-		JLabel etiqueta1R = new JLabel("Darse de baja");
-		etiqueta1R.setSize(200, 40);
-		etiqueta1R.setLocation(140, 20);
-		etiqueta1R.setHorizontalAlignment(JLabel.CENTER);
-		etiqueta1R.setFont(new Font("Bahnschrift", Font.BOLD, 20));
-		registro.add(etiqueta1R);
-
-		return registro;
+				router("login");
+			}
+		});
+		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Eliminar usuario");
+		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnNewButton_1.setBounds(173, 454, 127, 32);
+		contentPane.add(btnNewButton_1);
+		
+		JLabel lblNewLabel_1_1_1 = new JLabel("Nombre de usuario: Juan Perez Lopez");
+		lblNewLabel_1_1_1.setForeground(Color.WHITE);
+		lblNewLabel_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_1_1_1.setBounds(99, 274, 314, 21);
+		contentPane.add(lblNewLabel_1_1_1);
+		
+		JButton btnNewButton_1_1 = new JButton("Buscar usuario");
+		btnNewButton_1_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnNewButton_1_1.setBounds(173, 219, 127, 32);
+		return contentPane.add(btnNewButton_1_1);
 	}
 
-	public JPanel consultar() {
+	public Component consultar(){
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 500, 800);
+		setLocationRelativeTo(null);
+		
+		contentPane = new JPanel();
+		contentPane.setToolTipText("jlvhkc jd\r\nsjcbdhuv\r\ncidjb");
+		contentPane.setBackground(Color.decode("#531987"));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
-		JPanel panelPrincipal = new JPanel();
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Consultar usuario");
+		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
+		lblNewLabel.setBounds(85, 74, 298, 21);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Ingrese ID:");
+		lblNewLabel_1.setForeground(new Color(255, 255, 255));
+		lblNewLabel_1.setFont(new Font("Bahnschrift", Font.BOLD, 15));
+		lblNewLabel_1.setBounds(108, 120, 247, 21);
+		contentPane.add(lblNewLabel_1);
+		
+		textField = new JTextField();
+		textField.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		textField.setBounds(108, 151, 284, 25);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		JButton btnNewButton = new JButton("Volver");
+		btnNewButton.setFont(new Font("Bahnschrift", Font.BOLD, 15));
+		btnNewButton.setBounds(10, 10, 93, 25);
+		btnNewButton.addActionListener(new ActionListener() {
 
-		panelPrincipal.setBackground(Color.decode("#936f52"));
-		panelPrincipal.setOpaque(true);
-		panelPrincipal.setSize(1000, 800);
-		panelPrincipal.setLocation(0, 0);
-		panelPrincipal.setLayout(null);// quita todo el molde
+			@Override
+			public void actionPerformed(ActionEvent e) {
 
-		JLabel etiqueta1R = new JLabel("Consultar datos");
-		etiqueta1R.setSize(200, 40);
-		etiqueta1R.setLocation(140, 20);
-		etiqueta1R.setHorizontalAlignment(JLabel.CENTER);
-		etiqueta1R.setFont(new Font("Bahnschrift", Font.BOLD, 20));
-		panelPrincipal.add(etiqueta1R);
+				router("login");
+			}
+		});
+		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Cerrar");
+		btnNewButton_1.setFont(new Font("Bahnschrift", Font.BOLD, 14));
+		btnNewButton_1.setBounds(186, 514, 127, 32);
+		contentPane.add(btnNewButton_1);
+		
+		JButton btnNewButton_1_1 = new JButton("Buscar usuario");
+		btnNewButton_1_1.setFont(new Font("Bahnschrift", Font.BOLD, 13));
+		btnNewButton_1_1.setBounds(186, 197, 127, 32);
+		contentPane.add(btnNewButton_1_1);
+		
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+		    new Object[][] {
+		        {"1", "Juan Pérez", "juan.perez@email.com", "555-1234"},
+		        {"2", "María López", "maria.lopez@email.com", "555-5678"},
+		        {"3", "Carlos Gómez", "carlos.gomez@email.com", "555-9101"},
+		        {"4", "Ana Ramírez", "ana.ramirez@email.com", "555-1122"},
+		        {"5", "Pedro Torres", "pedro.torres@email.com", "555-3344"},
+		        {"6", "Laura Díaz", "laura.diaz@email.com", "555-5566"},
+		        {"7", "José Martínez", "jose.martinez@email.com", "555-7788"},
+		        {"8", "Sofía Herrera", "sofia.herrera@email.com", "555-9900"},
+		        {"9", "Ricardo Mendoza", "ricardo.mendoza@email.com", "555-2233"},
+		        {"10", "Fernanda Cruz", "fernanda.cruz@email.com", "555-4455"},
+		        {"11", "Luis Vázquez", "luis.vazquez@email.com", "555-6677"},
+		        {"12", "Andrea Morales", "andrea.morales@email.com", "555-8899"},
+		        {"13", "Miguel Rojas", "miguel.rojas@email.com", "555-0011"},
+		        {"14", "Gabriela Castillo", "gabriela.castillo@email.com", "555-2234"},
+		        {"15", "David Reyes", "david.reyes@email.com", "555-5567"},
+		    },
+		    new String[] {
+		        "ID", "Nombre", "Correo", "Número"
+		    }
+		));
 
-		return panelPrincipal;
+		JScrollPane scrollPane = new JScrollPane(table);
+		scrollPane.setBounds(50, 284, 400, 200); 
+		return contentPane.add(scrollPane);
 	}
 	
-	public JPanel comoCrearUsuario() {
+	public Component comoCrearUsuario()  {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 500, 800);
+		setLocationRelativeTo(null);
+		
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.decode("#875319"));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
-		JPanel panelPrincipal = new JPanel();
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("¿Como crear un usuario?");
+		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
+		lblNewLabel.setBounds(85, 74, 298, 21);
+		contentPane.add(lblNewLabel);
+		
+		JButton btnNewButton = new JButton("Volver");
+		btnNewButton.setFont(new Font("Bahnschrift", Font.BOLD, 15));
+		btnNewButton.setBounds(10, 10, 93, 25);
+		btnNewButton.addActionListener(new ActionListener() {
 
-		panelPrincipal.setBackground(Color.decode("#526993"));
-		panelPrincipal.setOpaque(true);
-		panelPrincipal.setSize(1000, 800);
-		panelPrincipal.setLocation(0, 0);
-		panelPrincipal.setLayout(null);// quita todo el molde
+			@Override
+			public void actionPerformed(ActionEvent e) {
 
-		JLabel etiqueta1R = new JLabel("¿Como crear un usuario?");
-		etiqueta1R.setSize(200, 40);
-		etiqueta1R.setLocation(140, 20);
-		etiqueta1R.setHorizontalAlignment(JLabel.CENTER);
-		etiqueta1R.setFont(new Font("Bahnschrift", Font.BOLD, 20));
-		panelPrincipal.add(etiqueta1R);
-
-		return panelPrincipal;
+				router("login");
+			}
+		});
+		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Cerrar");
+		btnNewButton_1.setFont(new Font("Bahnschrift", Font.BOLD, 14));
+		btnNewButton_1.setBounds(161, 324, 127, 32);
+		contentPane.add(btnNewButton_1);
+		
+		JTextArea txtrDirgeteA = new JTextArea();
+		txtrDirgeteA.setForeground(new Color(255, 255, 255));
+		txtrDirgeteA.setBackground(new Color(0, 0, 0));
+		txtrDirgeteA.setOpaque(false);
+		txtrDirgeteA.setFont(new Font("Bahnschrift", Font.BOLD, 15));
+		txtrDirgeteA.setText("1. Dirígete a la sección 'Cuentas'. \n"+
+				"2. Haz clic en 'Registro'.\n"+
+	            "3. Completa los datos requeridos.\n" +
+	            "4. Presiona el botón 'Guardar'.\n\n" +
+	            "Si necesitas más información, consulta el manual."
+        );
+		txtrDirgeteA.setBounds(85, 180, 298, 92);
+		return contentPane.add(txtrDirgeteA);
 	}
 
-	public JPanel comoAccederSistema() {
+	public Component comoAccederSistema() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 500, 800);
+		setLocationRelativeTo(null);
+		
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.decode("#872b19"));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
-		JPanel panelPrincipal = new JPanel();
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("¿Cómo acceder al sistema? ");
+		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
+		lblNewLabel.setBounds(85, 74, 298, 21);
+		contentPane.add(lblNewLabel);
+		
+		JButton btnNewButton = new JButton("Volver");
+		btnNewButton.setFont(new Font("Bahnschrift", Font.BOLD, 15));
+		btnNewButton.setBounds(10, 10, 93, 25);
+		btnNewButton.addActionListener(new ActionListener() {
 
-		panelPrincipal.setBackground(Color.decode("#526993"));
-		panelPrincipal.setOpaque(true);
-		panelPrincipal.setSize(1000, 800);
-		panelPrincipal.setLocation(0, 0);
-		panelPrincipal.setLayout(null);// quita todo el molde
+			@Override
+			public void actionPerformed(ActionEvent e) {
 
-		JLabel etiqueta1R = new JLabel("¿Como acceder al sistema?");
-		etiqueta1R.setSize(200, 40);
-		etiqueta1R.setLocation(140, 20);
-		etiqueta1R.setHorizontalAlignment(JLabel.CENTER);
-		etiqueta1R.setFont(new Font("Bahnschrift", Font.BOLD, 20));
-		panelPrincipal.add(etiqueta1R);
-
-		return panelPrincipal;
+				router("login");
+			}
+		});
+		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Cerrar");
+		btnNewButton_1.setFont(new Font("Bahnschrift", Font.BOLD, 14));
+		btnNewButton_1.setBounds(161, 324, 127, 32);
+		contentPane.add(btnNewButton_1);
+		
+		JTextArea txtrDirgeteA = new JTextArea();
+		txtrDirgeteA.setForeground(new Color(255, 255, 255));
+		txtrDirgeteA.setBackground(new Color(0, 0, 0));
+		txtrDirgeteA.setOpaque(false);
+		txtrDirgeteA.setFont(new Font("Bahnschrift", Font.BOLD, 15));
+		txtrDirgeteA.setText("1.Abrir la pantalla de inicio de sesión:\r\n2.Ingresar tus credenciales.\r\n3.Haz clic en el botón \"Iniciar sesión\".\r\n4.Acceso exitoso o errores:\r\n-Si las credenciales son correctas, entrarás al sistema.\r\n-Si aparece un error, verifica que.\r\n   -El correo electrónico esté escrito correctamente.\r\n   -La contraseña sea la correcta.\r\n"
+        );
+		txtrDirgeteA.setBounds(42, 131, 420, 183);
+		return contentPane.add(txtrDirgeteA);
 	}
 
-	public JPanel pasaOlvidoContrasena() {
+	public Component pasaOlvidoContrasena() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 500, 800);
+		setLocationRelativeTo(null);
+		
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.decode("#871957"));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
-		JPanel panelPrincipal = new JPanel();
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("¿Cómo acceder al sistema? ");
+		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
+		lblNewLabel.setBounds(85, 74, 298, 21);
+		contentPane.add(lblNewLabel);
+		
+		JButton btnNewButton = new JButton("Volver");
+		btnNewButton.setFont(new Font("Bahnschrift", Font.BOLD, 15));
+		btnNewButton.setBounds(10, 10, 93, 25);
+		btnNewButton.addActionListener(new ActionListener() {
 
-		panelPrincipal.setBackground(Color.decode("#645293"));
-		panelPrincipal.setOpaque(true);
-		panelPrincipal.setSize(1000, 800);
-		panelPrincipal.setLocation(0, 0);
-		panelPrincipal.setLayout(null);// quita todo el molde
+			@Override
+			public void actionPerformed(ActionEvent e) {
 
-		JLabel etiqueta1R = new JLabel("¿Qué pasa si olvidé mi contraseña?");
-		etiqueta1R.setSize(200, 40);
-		etiqueta1R.setLocation(140, 20);
-		etiqueta1R.setHorizontalAlignment(JLabel.CENTER);
-		etiqueta1R.setFont(new Font("Bahnschrift", Font.BOLD, 20));
-		panelPrincipal.add(etiqueta1R);
+				router("login");
+			}
+		});
+		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Cerrar");
+		btnNewButton_1.setFont(new Font("Bahnschrift", Font.BOLD, 14));
+		btnNewButton_1.setBounds(161, 324, 127, 32);
+		contentPane.add(btnNewButton_1);
 
-		return panelPrincipal;
+		JTextArea txtrDirgeteA = new JTextArea();
+		txtrDirgeteA.setForeground(new Color(255, 255, 255));
+		txtrDirgeteA.setBackground(new Color(0, 0, 0));
+		txtrDirgeteA.setOpaque(false);
+		txtrDirgeteA.setFont(new Font("Bahnschrift", Font.BOLD, 15));
+		txtrDirgeteA.setText(
+				"1.Abrir la opción de recuperación.\r\n2.Ingresar el correo registrado.\r\n3.Verificar tu correo electrónico.\r\n4.Ingresar el código de verificación.\r\n5.Restablecer la contraseña:\r\n6.Iniciar sesión con la nueva contraseña.\r\n");
+		txtrDirgeteA.setBounds(98, 147, 319, 137);
+		return contentPane.add(txtrDirgeteA);
 	}
 	
 	public JPanel loginImagen() {
@@ -662,18 +976,6 @@ public class login extends JFrame {
 		password.setLocation(140, 220);
 		password.setFont(new Font("Bahnschrift", Font.PLAIN, 15));
 		registro.add(password);
-
-		JLabel OlvidoContrasena = new JLabel("¿Olvidó su contraseña?");
-		OlvidoContrasena.setSize(200, 20);
-		OlvidoContrasena.setLocation(220, 260);
-		OlvidoContrasena.setFont(new Font("Bahnschrift", Font.ITALIC, 12));
-		registro.add(OlvidoContrasena);
-
-		JLabel CrearCuenta = new JLabel("¿No tienes cuenta? Crear cuenta");
-		CrearCuenta.setSize(200, 20);
-		CrearCuenta.setLocation(160, 350);
-		CrearCuenta.setFont(new Font("Bahnschrift", Font.ITALIC, 12));
-		registro.add(CrearCuenta);
 
 		JButton volver = new JButton("Volver");
 		volver.setSize(75, 40);
