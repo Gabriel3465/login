@@ -40,8 +40,6 @@ public class login extends JFrame {
 	private JTextField textField_3;
 	private JTable table;
 
-
-
 	public login() {
 		setVisible(true);
 		setSize(500, 800);
